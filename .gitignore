@@ -9,3 +9,5 @@ config.*.json
 # IDE & System files
 .DS_Store
 .vscode/
+
+build

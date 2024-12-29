@@ -1,6 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import sharp from 'sharp';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function convertSvgToPng(svgPath, pngPath, size) {
   try {
@@ -21,8 +25,10 @@ async function convertAllIcons() {
   const iconsDir = path.join(__dirname, '../icons');
 
   // Ensure icons directory exists
-  if (!fs.existsSync(iconsDir)) {
-    fs.mkdirSync(iconsDir, { recursive: true });
+  try {
+    await fs.access(iconsDir);
+  } catch {
+    await fs.mkdir(iconsDir, { recursive: true });
   }
 
   // Convert each size
