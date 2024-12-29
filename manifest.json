@@ -8,7 +8,8 @@
   "permissions": [
     "activeTab",
     "storage",
-    "identity"
+    "identity",
+    "commands"
   ],
   "host_permissions": [
     "https://github.com/*",
@@ -38,11 +39,16 @@
     "128": "icons/icon128.png"
   },
   "web_accessible_resources": [{
-    "resources": ["background/*.js"],
+    "resources": ["background/*.js", "config.json"],
     "matches": ["<all_urls>"]
   }],
   "options_ui": {
     "page": "options/settings.html",
     "open_in_tab": true
+  },
+  "commands": {
+    "_execute_action": {
+      "description": "Open LinkStack sync menu"
+    }
   }
 }

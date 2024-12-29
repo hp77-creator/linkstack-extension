@@ -1,14 +1,25 @@
-import config from '../config.json' assert { type: 'json' };
-
 export class WebAuthFlow {
   constructor() {
     this.accessToken = null;
-    this.clientId = config.github.webFlow.clientId;
-    this.clientSecret = config.github.webFlow.clientSecret;
+    this.clientId = null;
+    this.clientSecret = null;
+  }
+
+  async loadConfig() {
+    try {
+      const response = await fetch(chrome.runtime.getURL('config.json'));
+      const config = await response.json();
+      this.clientId = config.github.webFlow.clientId;
+      this.clientSecret = config.github.webFlow.clientSecret;
+    } catch (error) {
+      console.error('Failed to load config:', error);
+      throw new Error('Failed to load configuration');
+    }
   }
 
   async initialize() {
     console.log('WebAuthFlow: Initializing...');
+    await this.loadConfig();
     const { accessToken } = await chrome.storage.local.get('accessToken');
     console.log('WebAuthFlow: Loaded token from storage:', { accessToken });
     this.accessToken = accessToken || null;
