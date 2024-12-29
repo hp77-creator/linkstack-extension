@@ -4,8 +4,10 @@
   "description": "Browser extension for LinkStash app",
   "scripts": {
     "build:icons": "node scripts/convert-icons.js",
-    "build": "npm run build:icons"
+    "build:extension": "node scripts/build.js",
+    "build": "npm run build:icons && npm run build:extension"
   },
+  "type": "module",
   "devDependencies": {
     "sharp": "^0.32.6"
   }
