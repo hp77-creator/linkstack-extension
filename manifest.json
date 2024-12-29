@@ -38,5 +38,9 @@
   "web_accessible_resources": [{
     "resources": ["background/*.js"],
     "matches": ["<all_urls>"]
-  }]
+  }],
+  "options_ui": {
+    "page": "options/settings.html",
+    "open_in_tab": true
+  }
 }

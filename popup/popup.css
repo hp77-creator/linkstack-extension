@@ -197,19 +197,11 @@ input:focus, textarea:focus {
   margin: 12px 0;
 }
 
-.settings-section {
-  background-color: var(--hover-color);
-  border-radius: 6px;
-  padding: 16px;
-  margin: 16px 0;
+.header-buttons {
+  display: flex;
+  gap: 8px;
 }
 
-.settings-section h3 {
-  margin: 0 0 12px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.settings-section .button {
-  margin-top: 8px;
+.icon-button svg {
+  fill: currentColor;
 }

@@ -133,6 +133,11 @@ document.getElementById('logout').addEventListener('click', async () => {
   }
 });
 
+// Settings handling
+document.getElementById('open-settings').addEventListener('click', () => {
+  chrome.runtime.openOptionsPage();
+});
+
 // Status/Error display
 function showStatus(message, type = 'error') {
   const status = document.getElementById('status');
@@ -157,13 +162,8 @@ async function initializePopup() {
   showScreen('loading');
   try {
     // Check storage directly first
-    const { accessToken, repoName } = await chrome.storage.local.get(['accessToken', 'repoName']);
-    console.log('Popup: Storage check:', { hasToken: !!accessToken, repoName });
-    
-    // Set repo name in input if available
-    if (repoName) {
-      document.getElementById('repo-name').value = repoName;
-    }
+    const { accessToken } = await chrome.storage.local.get(['accessToken']);
+    console.log('Popup: Storage check:', { hasToken: !!accessToken });
 
     // Wait for response using Promise
     console.log('Popup: Checking auth with background...');
@@ -188,21 +188,4 @@ async function initializePopup() {
 }
 
 // Start initialization when popup opens
-// Settings handling
-document.getElementById('save-settings').addEventListener('click', async () => {
-  const repoName = document.getElementById('repo-name').value.trim();
-  if (!repoName) {
-    showError('Repository name cannot be empty');
-    return;
-  }
-
-  try {
-    await chrome.storage.local.set({ repoName });
-    showStatus('Settings saved successfully!', 'success');
-  } catch (error) {
-    console.error('Popup: Save settings error:', error);
-    showError('Failed to save settings');
-  }
-});
-
 document.addEventListener('DOMContentLoaded', initializePopup);

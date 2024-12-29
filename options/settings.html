@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>LinkStack Settings</title>
+  <style>
+    body {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .help-text {
+      display: block;
+      margin-top: 4px;
+      color: #666;
+      font-size: 0.9em;
+    }
+    button {
+      background: #2ea44f;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2c974b;
+    }
+    .status {
+      margin-top: 16px;
+      padding: 8px;
+      border-radius: 4px;
+      display: none;
+    }
+    .status.success {
+      background: #def1d7;
+      color: #1e4620;
+    }
+    .status.error {
+      background: #ffe3e3;
+      color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <h1>LinkStack Settings</h1>
+  
+  <div class="form-group">
+    <label for="repo-name">GitHub Repository Name</label>
+    <input type="text" id="repo-name" placeholder="e.g., linkstash-sync">
+    <span class="help-text">Repository will be created if it doesn't exist</span>
+  </div>
+  
+  <button id="save-settings">Save Settings</button>
+  
+  <div id="status" class="status"></div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
