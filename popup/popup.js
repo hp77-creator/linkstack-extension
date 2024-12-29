@@ -82,11 +82,16 @@ document.getElementById('save-form').addEventListener('submit', async (event) =>
       };
     }
 
-    const tags = document.getElementById('tags').value
+    const tagInput = document.getElementById('tags').value;
+    const tags = tagInput
       .split(',')
       .map(tag => tag.trim())
       .filter(tag => tag.length > 0)
-      .map(tag => ({ name: tag }));
+      .filter(tag => /^[a-zA-Z0-9_-]+$/.test(tag)); // Only allow alphanumeric, underscore, and hyphen
+
+    if (tags.length === 0) {
+      throw new Error('At least one valid tag is required. Tags can only contain letters, numbers, underscore, and hyphen.');
+    }
 
     // Override with form values
     const link = {
