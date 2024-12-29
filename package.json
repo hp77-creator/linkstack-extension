@@ -1,0 +1,12 @@
+{
+  "name": "linkstack-extension",
+  "version": "1.0.0",
+  "description": "Browser extension for LinkStash app",
+  "scripts": {
+    "build:icons": "node scripts/convert-icons.js",
+    "build": "npm run build:icons"
+  },
+  "devDependencies": {
+    "sharp": "^0.32.6"
+  }
+}

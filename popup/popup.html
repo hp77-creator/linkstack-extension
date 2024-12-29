@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkStash</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Auth Screen -->
+    <div id="auth-screen" class="screen" style="display: none;">
+      <h2>Sign in with GitHub</h2>
+      <p>To sync your links, please authenticate with GitHub:</p>
+      <button id="start-auth" class="button primary">Start Authentication</button>
+    </div>
+
+    <!-- Main Screen -->
+    <div id="main-screen" class="screen" style="display: none;">
+      <div class="header">
+        <div class="title-section">
+          <h2>Save Link</h2>
+          <p class="subtitle">Save this page to LinkStack and sync with GitHub</p>
+        </div>
+        <button id="logout" class="icon-button" title="Logout">
+          <svg width="16" height="16" viewBox="0 0 16 16">
+            <path d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 010 1.5h-2.5a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 010 1.5h-2.5A1.75 1.75 0 012 13.25V2.75zm10.44 4.5H6.75a.75.75 0 000 1.5h5.69l-1.97 1.97a.75.75 0 101.06 1.06l3.25-3.25a.75.75 0 000-1.06l-3.25-3.25a.75.75 0 10-1.06 1.06l1.97 1.97z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="info-box">
+        <p>📌 Links are automatically synced to your GitHub repository</p>
+        <p>🏷️ Add tags to organize your links</p>
+        <p>📱 Access your links in the LinkStack Android app</p>
+      </div>
+
+      <div class="settings-section">
+        <h3>Settings</h3>
+        <div class="form-group">
+          <label for="repo-name">GitHub Repository Name</label>
+          <input type="text" id="repo-name" placeholder="e.g., linkstash-sync">
+          <span class="help-text">Repository will be created if it doesn't exist</span>
+        </div>
+        <button id="save-settings" class="button">Save Settings</button>
+      </div>
+
+      <form id="save-form">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required>
+          <span class="help-text">Page title (automatically extracted)</span>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" rows="2"></textarea>
+          <span class="help-text">Brief description of the page</span>
+        </div>
+
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <input type="text" id="tags" placeholder="e.g., work, reading, tech">
+          <span class="help-text">Separate tags with commas</span>
+        </div>
+
+        <button type="submit" class="button primary">Save & Sync to GitHub</button>
+      </form>
+
+      <div id="status" class="status" style="display: none;"></div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen" style="display: none;">
+      <div class="loader"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
