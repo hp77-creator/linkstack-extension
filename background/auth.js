@@ -1,8 +1,10 @@
+import config from '../config.json' assert { type: 'json' };
+
 export class WebAuthFlow {
   constructor() {
     this.accessToken = null;
-    this.clientId = 'Ov23lieuDqVRjLOGe5Yg';
-    this.clientSecret = '68f1ad35103aed0d91726f84471e34635b30d838';
+    this.clientId = config.github.webFlow.clientId;
+    this.clientSecret = config.github.webFlow.clientSecret;
   }
 
   async initialize() {

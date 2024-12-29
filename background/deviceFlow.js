@@ -1,8 +1,10 @@
-const CLIENT_ID = 'Ov23li7qhdsIrB54MUwX';
+import config from '../config.json' assert { type: 'json' };
 
 export class DeviceFlowAuth {
   constructor() {
     this.accessToken = null;
+    this.clientId = config.github.deviceFlow.clientId;
+    this.clientSecret = config.github.deviceFlow.clientSecret;
   }
 
   async initialize() {
@@ -23,7 +25,7 @@ export class DeviceFlowAuth {
         'Accept': 'application/vnd.github.device-flow+json'
       },
       body: JSON.stringify({
-        client_id: CLIENT_ID,
+        client_id: this.clientId,
         scope: 'repo' // For private repos access
       })
     });
@@ -54,7 +56,8 @@ export class DeviceFlowAuth {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        client_id: CLIENT_ID,
+        client_id: this.clientId,
+        client_secret: this.clientSecret,
         device_code: deviceCode,
         grant_type: 'urn:ietf:params:oauth:grant-type:device_code'
       })

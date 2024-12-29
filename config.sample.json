@@ -1,0 +1,12 @@
+{
+  "github": {
+    "deviceFlow": {
+      "clientId": "your-device-flow-client-id",
+      "clientSecret": "your-device-flow-client-secret"
+    },
+    "webFlow": {
+      "clientId": "your-web-flow-client-id",
+      "clientSecret": "your-web-flow-client-secret"
+    }
+  }
+}

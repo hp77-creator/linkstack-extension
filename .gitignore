@@ -1,1 +1,11 @@
 node_modules
+
+# Environment & credentials
+.env
+config.json
+config.*.json
+!config.sample.json
+
+# IDE & System files
+.DS_Store
+.vscode/

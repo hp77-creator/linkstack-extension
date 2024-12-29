@@ -18,12 +18,26 @@ A browser extension that allows you to save and sync links with the LinkStack An
 npm install
 ```
 
-2. Build icons:
+2. Configure GitHub credentials:
+   - Create a new OAuth app at https://github.com/settings/developers
+   - Copy `config.sample.json` to `config.json`
+   - Update `config.json` with your GitHub OAuth app credentials:
+     ```json
+     {
+       "github": {
+         "clientId": "your-github-client-id",
+         "clientSecret": "your-github-client-secret"
+       }
+     }
+     ```
+   - Note: Never commit `config.json` to version control!
+
+3. Build icons:
 ```bash
 npm run build
 ```
 
-3. Load the extension in Chrome:
+4. Load the extension in Chrome:
    - Open Chrome and navigate to `chrome://extensions/`
    - Enable "Developer mode" in the top right
    - Click "Load unpacked" and select the extension directory
